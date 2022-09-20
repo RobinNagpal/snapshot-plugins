@@ -1,12 +1,12 @@
 import { isAddress } from '@ethersproject/address';
 import { JsonRpcProvider } from '@ethersproject/providers';
 import { keccak256 } from '@ethersproject/solidity';
-import memoize from 'lodash/memoize';
+import { memoize } from 'lodash';
 
-import SafeSnapPlugin, { MULTI_SEND_VERSION } from '../index';
-import { createMultiSendTx, getMultiSend } from './multiSend';
-import { ModuleTransaction, SafeData } from '../models';
 import { getProvider } from '../../../utils';
+import SafeSnapPlugin, { MULTI_SEND_VERSION } from '../index';
+import { ModuleTransaction, SafeData } from '../models';
+import { createMultiSendTx, getMultiSend } from './multiSend';
 
 export const mustBeEthereumAddress = memoize((address: string) => {
   const startsWith0x = address?.startsWith('0x');
